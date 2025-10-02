@@ -1,11 +1,48 @@
-# Route Planning Project
+# OpenStreetMap Route Planner
 
-This repo contains the starter code for the Route Planning project.
+This repo contains a C++ project that implements a **route planning application** using real map data from the [OpenStreetMap](https://www.openstreetmap.org/). 
+This application reads map data, calculates the shortest path between two points 
+using the **A* search algorithm**, and visually renders the route on a 2D map using the
+**IO2D graphics library**.
+This project demonstrates:
+- C++ practice: including classes, pointers, references, and STL containers.
+- Algorithm implementation: A* pathfinding with heuristics.
+- Practical application: Working with real-world map data (OpenStreetMap).
+- Unit testing: Ensuring correctness with Google Test.
 
 <img src="map.png" width="600" height="450" />
 
+---
+
+## Project Overview
+
+The goal of this project is to simulate a real-world route planning system, 
+similar to the functionality found in mapping applications like Google Maps.
+This project focuses on:
+
+- Parsing **OpenStreetMap XML (.osm) data**.
+- Building a **graph model** of nodes and edges (RouteModel).
+- Implementing the **A* search algorithm** to find the shortest path.
+- Rendering the map and the calculated route with **IO2D**.
+
+---
+
+## Repository Structure
+openstreetmap_route_planner/
+├── cmake/ # CMake configuration files (do not modify)
+├── src/ # Source code (folders where I added new functionalities)
+├── test/ # Unit tests using Google Test framework
+├── thirdparty/ # Third-party libraries (IO2D)
+├── build/ # Build output (created after building)
+├── map.osm # Example OpenStreetMap data
+└── README.md
+
+
+---
+
 ## Cloning
 
+The starter codes are in 'https://github.com/udacity/CppND-Route-Planning-Project.git'.
 When cloning this project, be sure to use the `--recurse-submodules` flag. Using HTTPS:
 ```
 git clone https://github.com/udacity/CppND-Route-Planning-Project.git --recurse-submodules
@@ -58,4 +95,16 @@ The testing executable is also placed in the `build` directory. From within `bui
 ```
 ./test
 ```
+---
+
+## Key Features
+- A Search Algorithm: Finds the shortest path efficiently.
+- RouteModel: Converts OSM data into nodes and edges for pathfinding.
+- Visual Rendering: IO2D library displays the map and calculated routes.
+- User Input: Start and end coordinates can be specified at runtime.
+- Modular Design: Easily extendable and testable code structure.
+
+
+
+
 
