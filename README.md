@@ -27,15 +27,15 @@ This project focuses on:
 
 ---
 
-## Repository Structure
 openstreetmap_route_planner/
-├── cmake/ # CMake configuration files (do not modify)
-├── src/ # Source code (folders where I added new functionalities)
-├── test/ # Unit tests using Google Test framework
-├── thirdparty/ # Third-party libraries (IO2D)
-├── build/ # Build output (created after building)
-├── map.osm # Example OpenStreetMap data
+├── cmake/           # CMake configuration files (do not modify)
+├── src/             # Source code (main.cpp, route_model.cpp, route_planner.cpp, render.cpp)
+├── test/            # Unit tests using Google Test framework
+├── thirdparty/      # Third-party libraries (IO2D)
+├── build/           # Build output (created after building)
+├── map.osm          # Example OpenStreetMap data
 └── README.md
+
 
 
 ---
