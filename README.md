@@ -1,42 +1,109 @@
-# OpenStreetMap Route Planner
+# OpenStreetMap Routing Engine (C++)
 
-This repo contains a C++ project that implements a **route planning application** using real map data from the [OpenStreetMap](https://www.openstreetmap.org/). 
-This application reads map data, calculates the shortest path between two points 
-using the **A* search algorithm**, and visually renders the route on a 2D map using the
-**IO2D graphics library**.
-This project demonstrates:
-- C++ practice: including classes, pointers, references, and STL containers.
-- Algorithm implementation: A* pathfinding with heuristics.
-- Practical application: Working with real-world map data (OpenStreetMap).
-- Unit testing: Ensuring correctness with Google Test.
+A lightweight geospatial routing engine built with C++ using real-world OpenStreetMap (OSM) data.
+
+This project explores how spatial data can be transformed into graph-based routing systems through:
+- OpenStreetMap parsing
+- spatial graph construction
+- A* shortest path search
+- route visualization and rendering
+
+The project was originally developed from the Udacity C++ Nanodegree Route Planning project framework and further extended with custom implementations of the A* routing logic and routing pipeline components.
+
 
 <img src="map.png" width="600" height="450" />
 
 ---
 
-## Project Overview
+## Features
 
-The goal of this project is to simulate a real-world route planning system, 
-similar to the functionality found in mapping applications like Google Maps.
-This project focuses on:
+### Geospatial Data Processing
+- Parses real OpenStreetMap XML (`.osm`) data
+- Converts OSM entities into graph-based spatial structures
+- Supports roads, buildings, landuse, water, and railway geometries
+- Handles multipolygon topology reconstruction
 
-- Parsing **OpenStreetMap XML (.osm) data**.
-- Building a **graph model** of nodes and edges (RouteModel).
-- Implementing the **A* search algorithm** to find the shortest path.
-- Rendering the map and the calculated route with **IO2D**.
+### Routing Engine
+- A* shortest-path search implementation
+- Nearest-node lookup for origin/destination snapping
+- Graph traversal using heuristic search
+- Distance-based routing over road network topology
+
+### Visualization
+- 2D rendering pipeline using IO2D
+- Dynamic route visualization
+- Layered rendering of roads, buildings, landuse, and waterways
+
+### Engineering Concepts
+- Modern C++ (STL containers, pointers, references, lambdas)
+- Modular architecture
+- Graph modeling and traversal
+- Spatial coordinate normalization
 
 ---
 
+## Example Workflow
+
+```text
+OpenStreetMap XML
+    ↓
+Spatial graph construction
+    ↓
+A* pathfinding
+    ↓
+Route generation
+    ↓
+2D rendering
+```
+
+---
+
+## Project Structure
+
+```text
 openstreetmap_route_planner/
-- cmake/           # CMake configuration files (do not modify)
-- src/             # Source code (main.cpp, route_model.cpp, route_planner.cpp, render.cpp)
-- test/            # Unit tests using Google Test framework
-- thirdparty/      # Third-party libraries (IO2D)
-- build/           # Build output (created after building)
-- map.osm          # Example OpenStreetMap data
-- README.md
 
+src/
+├── main.cpp
+├── model.cpp
+├── route_model.cpp
+├── route_planner.cpp
+├── render.cpp
 
+test/
+├── utest_rp_a_star_search.cpp
+
+map.osm
+map.png
+README.md
+```
+
+---
+
+## Core Components
+
+### `Model`
+Parses raw OpenStreetMap XML data and converts it into structured geospatial entities.
+
+### `RouteModel`
+Builds a graph abstraction on top of the parsed map data for routing operations.
+
+### `RoutePlanner`
+Implements the A* shortest-path search algorithm.
+
+### `Render`
+Responsible for map visualization and route rendering using IO2D.
+
+---
+
+## GeoJSON Export (Planned)
+
+Planned future improvements include:
+- GeoJSON route export
+- travel-time-based routing costs
+- speed-limit-aware edge weights
+- spatial indexing (KD-tree / R-tree)
+- routing performance benchmarking
 
 ---
 
@@ -97,12 +164,18 @@ The testing executable is also placed in the `build` directory. From within `bui
 ```
 ---
 
-## Key Features
-- A Search Algorithm: Finds the shortest path efficiently.
-- RouteModel: Converts OSM data into nodes and edges for pathfinding.
-- Visual Rendering: IO2D library displays the map and calculated routes.
-- User Input: Start and end coordinates can be specified at runtime.
-- Modular Design: Easily extendable and testable code structure.
+## Acknowledgements
+
+This project is based on the Udacity C++ Nanodegree Route Planning project framework:
+- OpenStreetMap parsing framework
+- rendering infrastructure
+- project architecture scaffold
+
+Custom implementations and extensions include:
+- A* routing logic
+- graph traversal modules
+- path construction pipeline
+- routing integration workflow
 
 
 
