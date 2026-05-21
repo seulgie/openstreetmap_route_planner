@@ -20,6 +20,8 @@ class RoutePlanner {
     std::vector<RouteModel::Node> ConstructFinalPath(RouteModel::Node *);
     RouteModel::Node *NextNode();
 
+    void ExportGeoJSON(const std::vector<RouteModel::Node>& path);
+
   private:
     // Add private variables or methods declarations here.
     std::vector<RouteModel::Node*> open_list;
